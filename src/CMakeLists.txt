@@ -162,6 +162,7 @@ target_include_directories(
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/core>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/arrow>
+         $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/omg>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/pixelate>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/circle>
          $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/tools/circlecount>
@@ -444,3 +445,9 @@ if (APPLE)
         message("Unable to find executable ${MAC_DEPLOY_QT}.")
     endif ()
 endif ()
+
+install(FILES "${CMAKE_CURRENT_SOURCE_DIR}/images/omg.png" DESTINATION share/${PROJECT_NAME}/resources)
+
+qt5_add_resources(APP_RESOURCES
+    "${CMAKE_CURRENT_SOURCE_DIR}/images/omg.png"
+)
