@@ -82,8 +82,9 @@ SelectionWidget::SideType SelectionWidget::getMouseSide(
 QVector<QRect> SelectionWidget::handlerAreas()
 {
     QVector<QRect> areas;
-    areas << m_TLHandle << m_TRHandle << m_BLHandle << m_BRHandle << m_LHandle
-          << m_THandle << m_RHandle << m_BHandle;
+    areas << m_TLHandle << m_TRHandle << m_BLHandle << m_BRHandle; //MODIFIED: Only show corners
+    // << m_LHandle
+    //      << m_THandle << m_RHandle << m_BHandle;
     return areas;
 }
 
@@ -384,8 +385,9 @@ void SelectionWidget::paintEvent(QPaintEvent*)
     p.drawRect(rect() + QMargins(0, 0, -1, -1));
     p.setRenderHint(QPainter::Antialiasing);
     p.setBrush(m_color);
+    
     for (auto rectangle : handlerAreas()) {
-        p.drawEllipse(rectangle);
+       p.drawEllipse(rectangle);
     }
 }
 
